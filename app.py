@@ -19,8 +19,8 @@ tfidf_transformer = pickle.load(open("tfidf_transformer.pkl", "rb"))
 
 @app.route('/predict',methods=['POST'])
 def predict():
-  text = request.args.get(' رن بقي و حيات امك ')
-  text = process.clean([text])
+  text = request.args.get('اكتب هنا')
+  text = process.clean(text)
   text_counts = vectorizer.fit_transform(text)
   text_transfrom = tfidf_transformer.fit_transform(text_counts)
   pred = model.predict(text_transfrom)
